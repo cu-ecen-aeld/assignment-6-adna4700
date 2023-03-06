@@ -11,16 +11,6 @@ PV = "1.0+git${SRCPV}"
 SRCREV = "d15386e50752fedb24758a92109bb76636597e98"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
-# https://docs.yoctoproject.org/ref-manual/variables.html?highlight=workdir#term-WORKDIR
-# We reference the "server" directory here to build from the "server" directory
-# in your assignments repo
-S = "${WORKDIR}/git/server"
-
-# TODO: Add the aesdsocket application and any other files you need to install
-# See https://git.yoctoproject.org/poky/plain/meta/conf/bitbake.conf?h=kirkstone
-
-FILES:${PN} += "${bindir}/aesdsocket"
-INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME_${PN} = "aesdsocket-start-stop.sh"
 inherit update-rc.d
 
