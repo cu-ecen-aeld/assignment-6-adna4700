@@ -8,17 +8,21 @@ SRC_URI = "git://git@github.com/cu-ecen-aeld/assignments-3-and-later-adna4700.gi
 
 PV = "1.0+git${SRCPV}"
 # TODO: set to reference a specific commit hash in your assignment repo
-SRCREV = "d15386e50752fedb24758a92109bb76636597e98"
+SRCREV = "ca794018578981834308880d67188ae941616e35"
 
-# This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
-INITSCRIPT_NAME_${PN} = "aesdsocket-start-stop.sh"
-inherit update-rc.d
+
+S = "${WORKDIR}/git/server"
+
 
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
 TARGET_LDFLAGS += "-pthread -lrt"
 
-RDEPENDS_${PN} = "libgcc"
+
+# This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
+INITSCRIPT_PACKAGES = "${PN}"
+INITSCRIPT_NAME:${PN} = "aesdsocket-start-stop"
+
 
 do_configure () {
 	:
