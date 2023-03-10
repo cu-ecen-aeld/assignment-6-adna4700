@@ -11,17 +11,9 @@ PV = "1.0+git${SRCPV}"
 SRCREV = "d15386e50752fedb24758a92109bb76636597e98"
 
 # This sets your staging directory based on WORKDIR, where WORKDIR is defined at 
-##INITSCRIPT_NAME_${PN} = "aesdsocket-start-stop.sh"
-#inherit update-rc.d
-S = "${WORKDIR}/git/server"
-
-
-# TODO: Add the aesdsocket application and any other files you need to install
-# See http://git.yoctoproject.org/cgit.cgi/poky/plain/meta/conf/bitbake.conf?h=warrior for yocto path prefixes
-FILES_${PN} += "${bindir}/aesdsocket"
-INITSCRIPT_PACKAGES = "${PN}"
 INITSCRIPT_NAME_${PN} = "aesdsocket-start-stop.sh"
 inherit update-rc.d
+
 # TODO: customize these as necessary for any libraries you need for your application
 # (and remove comment)
 TARGET_LDFLAGS += "-pthread -lrt"
